@@ -1,0 +1,34 @@
+---
+- hosts: 127.0.0.1
+  become: yes
+  tasks:
+  - name: install necessary packages
+    yum:
+      name:
+        - yum-utils
+        - device-mapper-persistent-data
+        - lvm2
+      state: present
+
+
+
+  - name: install docker
+    yum:
+      name: docker-ce
+      state: present
+
+  - name: add user to docker group
+    user:
+      name: username_on_the_host
+      group: docker
+      append: yes
+
+  - name: Make sure a service is running
+    systemd:
+      state: started
+      name: docker.service
+      enabled: true
+
+  - name: Add repository for kubectl
+    copy:
+                                                                                                                                                                   1,1          Haut
