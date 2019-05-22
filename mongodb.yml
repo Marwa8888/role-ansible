@@ -1,0 +1,11 @@
+----
+- name: Install MongoDB
+  hosts: mongodb-server
+  become: True
+  become_method: sudo
+  tasks:
+  - name: init mongoDB repo file
+    copy: src=mongodb_repo_template dest=/etc/yum.repos.d/mongodb.repo
+
+  - name: install MongoDB
+yum: name=mongodb-org state=present
