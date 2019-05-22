@@ -1,0 +1,5 @@
+#steps : install apache via yum and ensure apache is running, if not then start it and enable it at boot
+  - name: Install apache
+    yum: name=httpd state=present
+  - name: Ensure apache is running
+    service: name=httpd state=started enabled=yes
