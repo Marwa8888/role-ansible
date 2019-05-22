@@ -23,3 +23,12 @@ mv ./kind-darwin-amd64 /some-dir-in-your-PATH/kind
 kind create cluster
 
 export KUBECONFIG="$(kind get kubeconfig-path)"
+
+
+-------------------------------------------------------------------------------
+sudo curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+sudo chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+alias k=/usr/local/bin/kubectl
+sudo curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && sudo chmod +x minikube
+sudo cp minikube /usr/local/bin && rm minikube
